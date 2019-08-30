@@ -32,14 +32,22 @@ public class CTMobileTest {
         MobileElement formBtt =  driver.findElement(By.xpath("//android.widget.TextView[@text='Formulário']"));
         formBtt.click();
 
-        //Write Name
-        MobileElement name = driver.findElement(MobileBy.AccessibilityId("nome"));
-        name.sendKeys("Antonio");
+        //Click Combo
+        driver.findElement(MobileBy.AccessibilityId("console")).click();
 
-        //Check Name
-        Assert.assertEquals(name.getText(), "Antonio");
-        driver.quit();
+        //Select desired option
+        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='PS4']")).click();
 
+        /*
+        String optionSelected = driver.findElement(MobileBy.AccessibilityId("console")).findElement(By.className("android.widget.TextView")).getText();
+        or
+        String optionSelected = driver.findElement(By.xpath("//android.widget.Spinner/android.widget.TextView")).getText();
+        */
+
+        String optionSelected = driver.findElement(By.xpath("//android.widget.Spinner/android.widget.TextView")).getText();
+
+        //Check
+        Assert.assertEquals("PS4" , optionSelected);
 
     }
 }
