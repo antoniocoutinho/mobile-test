@@ -27,12 +27,16 @@ public class CTMobileTest {
         AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), desiredCapabilities);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        //Selecionar form
+        //Select form
         //List<MobileElement> elements = driver.findElements(By.xpath("//android.widget.TextView[@text='Formulário']"));
         MobileElement formBtt =  driver.findElement(By.xpath("//android.widget.TextView[@text='Formulário']"));
         formBtt.click();
+
+        //Write Name
         MobileElement name = driver.findElement(MobileBy.AccessibilityId("nome"));
         name.sendKeys("Antonio");
+
+        //Check Name
         Assert.assertEquals(name.getText(), "Antonio");
         driver.quit();
 
