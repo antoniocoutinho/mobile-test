@@ -106,12 +106,16 @@ public class CTMobileTest {
         formBtt.click();
 
         //Verify Elements Status
-        driver.findElement(MobileBy.AccessibilityId("check")).isDisplayed();
+        MobileElement ch = driver.findElement(MobileBy.AccessibilityId("check"));
+        MobileElement sw = driver.findElement(MobileBy.AccessibilityId("switch"));
 
         //Click on Elements
-        driver.findElement(MobileBy.AccessibilityId("check")).click();
+        ch.click();
+        sw.click();
 
-        Assert.assertTrue(driver.findElement(MobileBy.AccessibilityId("check")).isEnabled());
+
+        Assert.assertTrue(ch.getAttribute("checked").equals("true"));
+        Assert.assertTrue(sw.getAttribute("checked").equals("false"));
 
         driver.quit();
     }
