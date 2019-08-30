@@ -19,14 +19,7 @@ public class CTMobileTest {
     @Test
     public void testInputName() throws MalformedURLException{
 
-        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setCapability("platformName", "Android");
-        desiredCapabilities.setCapability("deviceName", "emulator-5554");
-        desiredCapabilities.setCapability("automationName", "uiautomator2");
-        desiredCapabilities.setCapability(MobileCapabilityType.APP, "C:\\Users\\User\\IdeaProjects\\androidtest\\src\\main\\resources\\CTAppium-1-1.apk");
-
-        AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), desiredCapabilities);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        AndroidDriver<MobileElement> driver = getMobileElementAndroidDriver();
 
         //Select form
         //List<MobileElement> elements = driver.findElements(By.xpath("//android.widget.TextView[@text='Formulário']"));
@@ -52,9 +45,8 @@ public class CTMobileTest {
         driver.quit();
 
     }
-    @Test
-    public void testComboBox() throws MalformedURLException{
 
+    private AndroidDriver<MobileElement> getMobileElementAndroidDriver() throws MalformedURLException {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
         desiredCapabilities.setCapability("deviceName", "emulator-5554");
@@ -63,6 +55,13 @@ public class CTMobileTest {
 
         AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), desiredCapabilities);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        return driver;
+    }
+
+    @Test
+    public void testComboBox() throws MalformedURLException{
+
+        AndroidDriver<MobileElement> driver = getMobileElementAndroidDriver();
 
         //Select form
         //List<MobileElement> elements = driver.findElements(By.xpath("//android.widget.TextView[@text='Formulário']"));
@@ -91,14 +90,7 @@ public class CTMobileTest {
     @Test
     public void testCkeckInput() throws MalformedURLException{
 
-        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setCapability("platformName", "Android");
-        desiredCapabilities.setCapability("deviceName", "emulator-5554");
-        desiredCapabilities.setCapability("automationName", "uiautomator2");
-        desiredCapabilities.setCapability(MobileCapabilityType.APP, "C:\\Users\\User\\IdeaProjects\\androidtest\\src\\main\\resources\\CTAppium-1-1.apk");
-
-        AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), desiredCapabilities);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        AndroidDriver<MobileElement> driver = getMobileElementAndroidDriver();
 
         //Select form
         //List<MobileElement> elements = driver.findElements(By.xpath("//android.widget.TextView[@text='Formulário']"));
