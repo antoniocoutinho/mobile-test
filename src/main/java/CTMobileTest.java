@@ -29,6 +29,8 @@ public class CTMobileTest {
 
         driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), desiredCapabilities);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        MobileElement formBtt =  driver.findElement(By.xpath("//android.widget.TextView[@text='Formulário']"));
+        formBtt.click();
     }
     @After
     public void tearDown(){
@@ -37,11 +39,6 @@ public class CTMobileTest {
 
     @Test
     public void testInputName() throws MalformedURLException{
-
-        //Select form
-        //List<MobileElement> elements = driver.findElements(By.xpath("//android.widget.TextView[@text='Formulário']"));
-        MobileElement formBtt =  driver.findElement(By.xpath("//android.widget.TextView[@text='Formulário']"));
-        formBtt.click();
 
         //Click Combo
         driver.findElement(MobileBy.AccessibilityId("console")).click();
@@ -66,11 +63,6 @@ public class CTMobileTest {
     @Test
     public void testComboBox() throws MalformedURLException{
 
-        //Select form
-        //List<MobileElement> elements = driver.findElements(By.xpath("//android.widget.TextView[@text='Formulário']"));
-        MobileElement formBtt =  driver.findElement(By.xpath("//android.widget.TextView[@text='Formulário']"));
-        formBtt.click();
-
         //Click Combo
         driver.findElement(MobileBy.AccessibilityId("console")).click();
 
@@ -92,20 +84,15 @@ public class CTMobileTest {
     @Test
     public void testCkeckInput() throws MalformedURLException{
 
-        //Select form
-        //List<MobileElement> elements = driver.findElements(By.xpath("//android.widget.TextView[@text='Formulário']"));
-        MobileElement formBtt =  driver.findElement(By.xpath("//android.widget.TextView[@text='Formulário']"));
-        formBtt.click();
-
         //Verify Elements Status
         MobileElement ch = driver.findElement(MobileBy.AccessibilityId("check"));
         MobileElement sw = driver.findElement(MobileBy.AccessibilityId("switch"));
-
+    
         //Click on Elements
         ch.click();
         sw.click();
 
-
+        //Assertion
         Assert.assertTrue(ch.getAttribute("checked").equals("true"));
         Assert.assertTrue(sw.getAttribute("checked").equals("false"));
     }
