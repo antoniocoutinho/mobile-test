@@ -1,5 +1,6 @@
 package appium;
 
+import core.DSL;
 import core.DriverFactory;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
@@ -18,6 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class CTMobileTest {
 
     private AndroidDriver<MobileElement> driver;
+    private DSL dsl = new DSL();
 
     @Before
     public void getMobileElementAndroidDriver(){
@@ -39,10 +41,8 @@ public class CTMobileTest {
     public void testInputName(){
 
         //Select desired option
-        driver.findElement(MobileBy.AccessibilityId("nome")).sendKeys("Antonio");
-
-        String inputName = driver.findElement(MobileBy.AccessibilityId("nome")).getText();
-
+        dsl.write(MobileBy.AccessibilityId("nome"), "Antonio");
+        String inputName = dsl.getText(MobileBy.AccessibilityId("nome"));
         //Check
         Assert.assertEquals("Antonio" , inputName );
 
@@ -53,10 +53,7 @@ public class CTMobileTest {
     public void testComboBox() {
 
         //Click Combo
-        driver.findElement(MobileBy.AccessibilityId("console")).click();
-
-        //Select desired option
-        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='PS4']")).click();
+        dsl.selectComboOption(MobileBy.AccessibilityId("console"), "PS4");
 
         /*
         String optionSelected = driver.findElement(MobileBy.AccessibilityId("console")).findElement(By.className("android.widget.TextView")).getText();
@@ -64,25 +61,22 @@ public class CTMobileTest {
         String optionSelected = driver.findElement(By.xpath("//android.widget.Spinner/android.widget.TextView")).getText();
         */
 
-        String optionSelected = driver.findElement(By.xpath("//android.widget.Spinner/android.widget.TextView")).getText();
+        String optionSelected = dsl.getText(By.xpath("//android.widget.Spinner/android.widget.TextView"));
 
         //Check
         Assert.assertEquals("PS4" , optionSelected);
+
     }
 
     @Test
     public void testCkeckInput(){
 
-        //Verify Elements Status
-        MobileElement ch = driver.findElement(MobileBy.AccessibilityId("check"));
-        MobileElement sw = driver.findElement(MobileBy.AccessibilityId("switch"));
-
         //Click on Elements
-        ch.click();
-        sw.click();
+        dsl.clickByElement(MobileBy.AccessibilityId("check"));
+        dsl.clickByElement(MobileBy.AccessibilityId("switch"));
 
         //Assertion
-        Assert.assertTrue(ch.getAttribute("checked").equals("true"));
-        Assert.assertTrue(sw.getAttribute("checked").equals("false"));
+        Assert.assertTrue(dsl.isChecked(MobileBy.AccessibilityId("check")));
+        Assert.assertFalse(dsl.isSwitched(MobileBy.AccessibilityId("switch")));
     }
 }
