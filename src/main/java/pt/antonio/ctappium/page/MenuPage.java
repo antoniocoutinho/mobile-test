@@ -1,12 +1,11 @@
 package pt.antonio.ctappium.page;
 
-import pt.antonio.ctappium.core.DSL;
+import pt.antonio.ctappium.core.BasePage;
 
-public class MenuPage {
-    private DSL dsl = new DSL();
+public class MenuPage extends BasePage {
 
     public void accessForm(){
-        dsl.clickByText("Formulário");
+        clickByText("Formulário");
     }
 
 }

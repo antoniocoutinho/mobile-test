@@ -1,11 +1,10 @@
 package pt.antonio.ctappium.core;
 
-import static pt.antonio.ctappium.core.DriverFactory.*;
-
 import org.openqa.selenium.By;
 
-public class DSL {
+import static pt.antonio.ctappium.core.DriverFactory.getDriver;
 
+public class BasePage {
     public void write(By by, String text){
         getDriver().findElement(by).sendKeys(text);
 

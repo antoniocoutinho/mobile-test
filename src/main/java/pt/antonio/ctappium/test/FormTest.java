@@ -1,18 +1,15 @@
 package pt.antonio.ctappium.test;
 
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.*;
-import org.openqa.selenium.By;
-import pt.antonio.ctappium.core.DSL;
+import pt.antonio.ctappium.core.BaseTest;
 import pt.antonio.ctappium.core.DriverFactory;
 import pt.antonio.ctappium.page.FormPage;
 import pt.antonio.ctappium.page.MenuPage;
 
-public class FormTest {
+public class FormTest extends BaseTest {
     private AndroidDriver<MobileElement> driver;
-    private DSL dsl = new DSL();
     private MenuPage menuPage = new MenuPage();
     private FormPage page = new FormPage();
 
@@ -26,10 +23,7 @@ public class FormTest {
     public void tearDown(){
         DriverFactory.getDriver().resetApp();
     }
-    @AfterClass
-    public static void endClass(){
-        DriverFactory.killDriver();
-    }
+
 
     @Test
     public void testInputName(){
