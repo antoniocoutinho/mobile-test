@@ -19,12 +19,6 @@ public class FormTest extends BaseTest {
         menuPage.accessForm();
     }
 
-    @After
-    public void tearDown(){
-        DriverFactory.getDriver().resetApp();
-    }
-
-
     @Test
     public void testInputName(){
 
