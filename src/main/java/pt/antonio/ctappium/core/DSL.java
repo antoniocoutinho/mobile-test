@@ -1,7 +1,7 @@
-package core;
+package pt.antonio.ctappium.core;
 
-import static core.DriverFactory.*;
-import io.appium.java_client.MobileBy;
+import static pt.antonio.ctappium.core.DriverFactory.*;
+
 import org.openqa.selenium.By;
 
 public class DSL {

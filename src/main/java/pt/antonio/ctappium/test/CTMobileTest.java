@@ -1,31 +1,24 @@
-package test;
+package pt.antonio.ctappium.test;
 
-import core.DSL;
-import core.DriverFactory;
+import pt.antonio.ctappium.core.DSL;
+import pt.antonio.ctappium.core.DriverFactory;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.MobileCapabilityType;
 import org.junit.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.sql.Time;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import pt.antonio.ctappium.page.MenuPage;
 
 public class CTMobileTest {
 
     private AndroidDriver<MobileElement> driver;
     private DSL dsl = new DSL();
+    private MenuPage menuPage = new MenuPage();
 
     @Before
     public void getMobileElementAndroidDriver(){
         driver =DriverFactory.getDriver();
-        MobileElement formBtt =  driver.findElement(By.xpath("//android.widget.TextView[@text='Formulário']"));
-        formBtt.click();
+        menuPage.accessForm();
     }
 
     @After
