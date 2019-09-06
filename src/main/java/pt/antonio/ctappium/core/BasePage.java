@@ -1,6 +1,9 @@
 package pt.antonio.ctappium.core;
 
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
+
+import java.util.List;
 
 import static pt.antonio.ctappium.core.DriverFactory.getDriver;
 
@@ -32,5 +35,8 @@ public class BasePage {
         return getDriver().findElement(by)
                 .getAttribute("checked")
                 .equals("true");
+    }
+    public Boolean isTextVisible(String text){
+        return getDriver().findElements(By.xpath("//*[@text='"+text+"']")).size() > 0;
     }
 }

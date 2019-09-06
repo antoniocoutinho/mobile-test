@@ -10,27 +10,21 @@ import pt.antonio.ctappium.page.MenuPage;
 
 public class FormTest extends BaseTest {
     private AndroidDriver<MobileElement> driver;
-    private MenuPage menuPage = new MenuPage();
+    private MenuPage menu = new MenuPage();
     private FormPage page = new FormPage();
-
-    @Before
-    public void getMobileElementAndroidDriver(){
-        driver = DriverFactory.getDriver();
-        menuPage.accessForm();
-    }
 
     @Test
     public void testInputName(){
 
+        menu.accessForm();
         page.writeName("Antonio");
         Assert.assertEquals("Antonio" , page.getInputName());
 
     }
 
-
     @Test
     public void testComboBox() {
-
+        menu.accessForm();
         page.selectComboOpt("PS4");
         Assert.assertEquals("PS4" , page.getSelectedOpt());
 
@@ -39,6 +33,7 @@ public class FormTest extends BaseTest {
     @Test
     public void testCkeckInput(){
 
+        menu.accessForm();
         page.selectInput();
         page.selectSwitch();
 

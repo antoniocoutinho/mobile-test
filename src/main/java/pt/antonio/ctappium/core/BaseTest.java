@@ -3,6 +3,7 @@ package pt.antonio.ctappium.core;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.OutputType;
@@ -15,6 +16,11 @@ public class BaseTest {
 
     @Rule
     public TestName testName = new TestName();
+
+    @Before
+    public void getMobileElementAndroidDriver(){
+        DriverFactory.getDriver();
+    }
 
     @After
     public void endClass(){
