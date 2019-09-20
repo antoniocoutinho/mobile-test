@@ -1,6 +1,7 @@
 package pt.antonio.ctappium.core;
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import org.openqa.selenium.By;
 
 import java.util.List;
@@ -38,5 +39,8 @@ public class BasePage {
     }
     public Boolean isTextVisible(String text){
         return getDriver().findElements(By.xpath("//*[@text='"+text+"']")).size() > 0;
+    }
+    public void tap(int x, int y){
+        new TouchAction(getDriver()).tap(x, y).perform();
     }
 }

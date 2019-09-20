@@ -11,6 +11,7 @@ import org.openqa.selenium.TakesScreenshot;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
@@ -39,6 +40,13 @@ public class BaseTest {
             File image = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(image, new File("target\\screenshot\\"+testName.getMethodName()+".png"));
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void waitInSec(int time) {
+        try {
+            TimeUnit.SECONDS.sleep(time);
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }

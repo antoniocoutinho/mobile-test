@@ -9,7 +9,7 @@ import pt.antonio.ctappium.page.FormPage;
 import pt.antonio.ctappium.page.MenuPage;
 
 public class FormTest extends BaseTest {
-    private AndroidDriver<MobileElement> driver;
+
     private MenuPage menu = new MenuPage();
     private FormPage page = new FormPage();
 
