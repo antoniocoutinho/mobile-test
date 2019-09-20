@@ -1,8 +1,11 @@
 package pt.antonio.ctappium.page;
 
         import io.appium.java_client.MobileBy;
+        import io.appium.java_client.MobileElement;
         import org.openqa.selenium.By;
         import pt.antonio.ctappium.core.BasePage;
+
+        import static pt.antonio.ctappium.core.DriverFactory.getDriver;
 
 
 public class FormPage extends BasePage {
@@ -30,5 +33,17 @@ public class FormPage extends BasePage {
     }
     public Boolean isSwitchOn(){
         return isSwitched(MobileBy.AccessibilityId("switch"));
+    }
+    public void clickSave(){ clickByText("SALVAR"); }
+    public void clickSeekBar(double position){
+        int delta = 50;
+        MobileElement seek = getDriver().findElement(MobileBy.AccessibilityId("slid"));
+        int y = seek.getLocation().y + (seek.getSize().height / 2);
+        System.out.println(y);
+        int xinitial = seek.getLocation().x + delta;
+        int x = (int) (xinitial + ((seek.getSize().width - 2 * delta) * position));
+        System.out.println(x);
+        tap(x,y);
+
     }
 }

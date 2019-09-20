@@ -13,10 +13,14 @@ public class FormTest extends BaseTest {
     private MenuPage menu = new MenuPage();
     private FormPage page = new FormPage();
 
+    @Before
+    public void setUp(){
+        menu.accessForm();
+    }
+
     @Test
     public void testInputName(){
 
-        menu.accessForm();
         page.writeName("Antonio");
         Assert.assertEquals("Antonio" , page.getInputName());
 
@@ -24,7 +28,6 @@ public class FormTest extends BaseTest {
 
     @Test
     public void testComboBox() {
-        menu.accessForm();
         page.selectComboOpt("PS4");
         Assert.assertEquals("PS4" , page.getSelectedOpt());
 
@@ -33,7 +36,6 @@ public class FormTest extends BaseTest {
     @Test
     public void testCkeckInput(){
 
-        menu.accessForm();
         page.selectInput();
         page.selectSwitch();
 
@@ -41,4 +43,9 @@ public class FormTest extends BaseTest {
         Assert.assertFalse(page.isSwitchOn());
     }
 
+    @Test
+    public void testSeek(){
+        page.clickSeekBar(0.80);
+        page.clickSave();
+    }
 }
