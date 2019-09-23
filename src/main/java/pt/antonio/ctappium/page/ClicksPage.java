@@ -14,8 +14,11 @@ public class ClicksPage extends BasePage {
                 longPress(getDriver().findElement(By.xpath("//*[@text='Clique Longo']"))).
                 perform();
     }
+    public void clickTwice(){
+        clickByText("Clique duplo");
+        clickByText("Clique duplo");
+    }
     public String getClickText(){
-        System.out.println(getDriver().findElement(By.xpath("(//android.widget.TextView)[3]")).getCoordinates());
         return getDriver().findElement(By.xpath("(//android.widget.TextView)[3]")).getText();
     }
 }
