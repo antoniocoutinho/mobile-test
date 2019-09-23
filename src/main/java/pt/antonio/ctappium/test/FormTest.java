@@ -47,5 +47,6 @@ public class FormTest extends BaseTest {
     public void testSeek(){
         page.clickSeekBar(0.80);
         page.clickSave();
+        Assert.assertTrue(page.checkSliderValue("80"));
     }
 }

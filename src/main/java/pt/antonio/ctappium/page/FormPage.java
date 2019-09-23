@@ -46,4 +46,8 @@ public class FormPage extends BasePage {
         tap(x,y);
 
     }
+    public Boolean checkSliderValue(String value){
+        System.out.println(getDriver().findElement(By.xpath("//android.widget.TextView[@text='Slider: "+ value +"']")).getText());
+        return getDriver().findElement(By.xpath("//android.widget.TextView[@text='Slider: "+ value +"']")).isDisplayed();
+    }
 }
