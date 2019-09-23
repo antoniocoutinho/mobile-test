@@ -13,5 +13,8 @@ public class MenuPage extends BasePage {
     public void accessAlerts(){
         clickByText("Alertas");
     }
+    public void accessClicks(){
+        clickByText("Cliques");
+    }
 
 }
