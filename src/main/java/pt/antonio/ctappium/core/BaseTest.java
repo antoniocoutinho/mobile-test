@@ -1,17 +1,23 @@
 package pt.antonio.ctappium.core;
 
+import io.appium.java_client.TouchAction;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
+
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+
+import static pt.antonio.ctappium.core.DriverFactory.getDriver;
 
 public class BaseTest {
 
@@ -20,13 +26,13 @@ public class BaseTest {
 
     @Before
     public void getMobileElementAndroidDriver(){
-        DriverFactory.getDriver();
+        getDriver();
     }
 
     @After
     public void endClass(){
         generateScreenShot();
-        DriverFactory.getDriver().resetApp();
+        getDriver().resetApp();
     }
 
     @AfterClass
@@ -37,7 +43,7 @@ public class BaseTest {
     public void generateScreenShot(){
 
         try {
-            File image = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.FILE);
+            File image = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(image, new File("target\\screenshot\\"+testName.getMethodName()+".png"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -49,5 +55,19 @@ public class BaseTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+    public void scroll(double start, double end){
+        Dimension size = getDriver().manage().window().getSize();
+
+        int x = size.width / 2;
+        int start_y = (int)(size.height * start);
+        int end_y = (int) (size.width * end);
+
+        new TouchAction(getDriver())
+                .press(x, start_y)
+                .waitAction(Duration.ofMillis(500))
+                .moveTo(x, end_y)
+                .release()
+                .perform();
     }
 }
