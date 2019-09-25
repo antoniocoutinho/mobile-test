@@ -3,7 +3,9 @@ package pt.antonio.ctappium.core;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 
+import java.time.Duration;
 import java.util.List;
 
 import static pt.antonio.ctappium.core.DriverFactory.getDriver;
@@ -42,5 +44,34 @@ public class BasePage {
     }
     public void tap(int x, int y){
         new TouchAction(getDriver()).tap(x, y).perform();
+    }
+
+    public void scroll(double start, double end){
+        Dimension size = getDriver().manage().window().getSize();
+
+        int x = size.width / 2;
+        int start_y = (int)(size.height * start);
+        int end_y = (int) (size.height  * end);
+
+        new TouchAction(getDriver())
+                .press(x, start_y)
+                .waitAction(Duration.ofMillis(500))
+                .moveTo(x, end_y)
+                .release()
+                .perform();
+    }
+    public void swipe(double start, double end){
+        Dimension size = getDriver().manage().window().getSize();
+
+        int y = size.height / 2;
+        int start_x = (int)(size.width * start);
+        int end_x = (int) (size.width * end);
+
+        new TouchAction(getDriver())
+                .press(start_x, y)
+                .waitAction(Duration.ofMillis(500))
+                .moveTo(end_x, y)
+                .release()
+                .perform();
     }
 }
