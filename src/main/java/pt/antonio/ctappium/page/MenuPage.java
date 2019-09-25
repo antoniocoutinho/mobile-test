@@ -19,6 +19,9 @@ public class MenuPage extends BasePage {
     public void accessHiddenOption(){
         clickByText("Opção bem escondida");
     }
+    public void accessSwipe(){
+        clickByText("Swipe");
+    }
 
     }
 
