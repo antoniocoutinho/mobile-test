@@ -20,11 +20,11 @@ public class SwipeTest extends BaseTest {
     public void swipeTest(){
         menu.accessSwipe();
         Assert.assertTrue(page.checkFistSwipeScreen());
-        page.swipe(0.9, 0.1);
+        page.swipeRight();
         Assert.assertTrue(page.checkSecondSwipeScreen());
         page.clickByText("›");
         Assert.assertTrue(page.checkLastSwipeScreen());
-        page.swipe(0.1, 0.9);
+        page.swipeLeft();
         page.clickByText("‹");
         Assert.assertTrue(page.checkFistSwipeScreen());
     }

@@ -24,7 +24,7 @@ public class ScrollTest extends BaseTest {
         WebDriverWait wait = new WebDriverWait(getDriver(),1);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@text='About...!']")));
 
-        page.scroll(0.9, 0.1);
+        page.scrollUp();
         menu.accessHiddenOption();
 
         Assert.assertTrue(page.isTextVisible("Você achou essa opção"));
