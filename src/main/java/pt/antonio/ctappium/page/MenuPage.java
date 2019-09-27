@@ -22,6 +22,9 @@ public class MenuPage extends BasePage {
     public void accessSwipe(){
         clickByText("Swipe");
     }
+    public void accessHybrid(){
+        clickByText("SeuBarriga Híbrido");
+    }
 
     }
 
