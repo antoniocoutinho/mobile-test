@@ -21,19 +21,24 @@
     </build>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+        <!-- Updated Appium Java client -->
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
-            <version>5.0.4</version>
+            <version>8.5.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <!-- Updated JUnit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13.2</version>
         </dependency>
-
+        <!-- Selenium (required by newer Appium clients) -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.21.0</version>
+        </dependency>
     </dependencies>
 
 

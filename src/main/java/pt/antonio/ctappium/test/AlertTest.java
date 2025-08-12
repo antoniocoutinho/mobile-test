@@ -1,6 +1,6 @@
 package pt.antonio.ctappium.test;
 
-import com.sun.xml.internal.ws.policy.AssertionSet;
+
 import org.junit.Assert;
 import org.junit.Test;
 import pt.antonio.ctappium.core.BaseTest;
